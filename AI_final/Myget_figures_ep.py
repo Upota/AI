@@ -1,22 +1,26 @@
 
 import matplotlib.pyplot as plt
-import random
 import pickle
+import numpy as np
 
+num = [0.0,0.1,0.3,0.5,0.8,1.0]
+place = 111
+fig = plt.figure(figsize=(13,10))
+color = ['lightpink', 'orange', 'seagreen', 'royalblue', 'skyblue', 'r']
 
-for num in [0.0,0.3,0.5,0.8,1.0]:
-    fname = './' + ('epsilon=%.1f'%(num)) + '.pkl'
-
+for i in range(6):
+    fname = './epsilon/' + ('epsilon=%.1f'%(num[i])) + '.pkl'
     with open(fname, 'rb') as f:
         data = pickle.load(f)
+    keys = list(data.keys())
+ 
+    y = data[keys[0]]
+    plt.plot(y,color[i],label='eps=%.1f'%(num[i]))
 
-    fig = plt.figure(figsize=(13,10))
-    place = [221]
-    color = ['lightpink', 'orange', 'seagreen', 'royalblue', 'skyblue']
-    for i, (place,keys) in enumerate(zip(place,data.keys())):
-        y = data[keys]
-        ax = fig.add_subplot(place)
-        ax.plot(y, color=random.choice(color))
-        ax.title.set_text(keys)
-    outname = 'epsilon=%.1f'%(num) + '.png'
-    fig.savefig(outname)
+plt.xlabel('# of episodes')
+plt.ylabel('avgQV')
+plt.title('Average of Q-values with various epsilons')
+plt.legend(loc='lower right')
+
+outname = 'epsilon.png'
+fig.savefig(outname)
