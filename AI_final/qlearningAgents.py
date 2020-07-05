@@ -190,10 +190,10 @@ class ApproximateQAgent(PacmanQAgent):
         self.cum_weights = defaultdict(list)
         self.avgQV = defaultdict(list)
         self.qv = util.Counter()
-        self.alpha = 1.0
+        # self.alpha = 1.0
         # self.epsilon = 1.0
         # self.eidx = "epsilon=%.1f" %self.epsilon       # code for discuss #3
-        self.idx = "alpha=%.1f" %self.alpha       # code for discuss #4
+        # self.idx = "alpha=%.1f" %self.alpha       # code for discuss #4
 
     def getWeights(self):
         return self.weights
@@ -250,12 +250,12 @@ class ApproximateQAgent(PacmanQAgent):
         # call the super-class final method
         PacmanQAgent.final(self, state)
         
-        trainAvg = (self.qv.totalCount() / len(self.qv))
+        # trainAvg = (self.qv.totalCount() / len(self.qv))
 
-        self.avgQV[self.idx].append(trainAvg)
-        fname = './alpha/' + self.idx + '.pkl'
-        with open(fname,'wb') as f:
-            pickle.dump(self.avgQV,f)
+        # self.avgQV[self.idx].append(trainAvg)
+        # fname = './alpha/' + self.idx + '.pkl'
+        # with open(fname,'wb') as f:
+        #     pickle.dump(self.avgQV,f)
         
         # self.avgQV[self.eidx].append(trainAvg)
         # fname = './epsilon/' + self.eidx + '.pkl'
