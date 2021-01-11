@@ -1,2 +1,2 @@
-# COSE361 - Artificial Intelligence, Korea Univ.
+# Artificial Intelligence
 PACMAN Naive Q-learning Algorithms Assignments 
