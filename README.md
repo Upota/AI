@@ -38,15 +38,21 @@ your_baseline2.py, your_baseline3.py
   </pre>
   
 # Final
-Implement Q-learning, epsilon greedy, bridge crossing, approximate Q-learning
+Implement Q-learning, epsilon greedy, bridge crossing, Q-learning and pacman, and approximate Q-learning
 * Edited files: qlearningAgents.py, analysis.py, featureExtractors.py, Myget_figures_ep.py, Myget_figures_alpha.py
 * How to run
   <pre>
   <code>
   $ python autograder.py -q q6
+  
   $ python autograder.py -q q7
+  
   $ python autograder.py -q q8
+  
+  $ python pacman.py -p PacmanQAgent -x 2000 -n 2010 -l smallGrid
   $ python autograder.py -q q9
+  
+  $ python pacman.py -p ApproximateQAgent -x 2000 -n 2010 -l smallGrid
   $ python autograder.py -q q10
   </code>
   </pre>
