@@ -27,6 +27,7 @@ Implement ReflexAgent, Minimax, and Alpha-Beta Prunung for Multi-Agent Pacman
   </pre>
   
 # Minicontest 2
+Implement Q-learning, epsilon greedy, bridge crossing, approximate Q-learning
 * Edited files:  {Student_ID}.py, your_baseline1.py,
 your_baseline2.py, your_baseline3.py 
 * How to run
@@ -37,4 +38,14 @@ your_baseline2.py, your_baseline3.py
   </pre>
   
 # Final
-* Edited files: qlearningAgents.py, analysis.py
+* Edited files: qlearningAgents.py, analysis.py, featureExtractors.py, Myget_figures_ep.py, Myget_figures_alpha.py
+* How to run
+  <pre>
+  <code>
+  $ python autograder.py -q q6
+  $ python autograder.py -q q7
+  $ python autograder.py -q q8
+  $ python autograder.py -q q9
+  $ python autograder.py -q q10
+  </code>
+  </pre>
