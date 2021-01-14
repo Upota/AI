@@ -1,4 +1,5 @@
 # Artificial Intelligence
+COSE361  
 PACMAN Naive Q-learning Algorithms Assignments 
 
 # Assignment 1
