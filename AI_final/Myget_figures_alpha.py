@@ -8,7 +8,7 @@ fig = plt.figure(figsize=(13,10))
 color = ['lightpink', 'orange', 'seagreen', 'royalblue', 'skyblue', 'r']
 
 for i in range(6):
-    fname = './alpha/' + ('alpha=%.1f'%(num[i])) + '.pkl'
+    fname = './report/alpha/' + ('alpha=%.1f'%(num[i])) + '.pkl'
     with open(fname, 'rb') as f:
         data = pickle.load(f)
     keys = list(data.keys())
