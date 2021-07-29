@@ -11,6 +11,7 @@
 # Student side autograding was added by Brad Miller, Nick Hay, and
 # Pieter Abbeel (pabbeel@cs.berkeley.edu).
 
+import random
 
 from util import manhattanDistance
 from game import Directions
@@ -182,9 +183,9 @@ class MinimaxAgent(MultiAgentSearchAgent):
         Returns whether or not the game state is a losing state
         """
 
-        val, action = self.value(gameState, 0, 0)       # 함수들의 반환형이 val, action의 꼴인데 val은 max, min을 계산하는 단계에서 필요하고,
+        val, actions = self.value(gameState, 0, 0)       # 함수들의 반환형이 val, action의 꼴인데 val은 max, min을 계산하는 단계에서 필요하고,
                                                         # action은 결국 마지막에 어떤 액션을 취해야하는지 결정적으로 알려주기위해 필요했다.
-        return action
+        return random.choice(actions)
     
     def value(self, State, next_agent, current_depth):      
         if State.isWin() or State.isLose() or current_depth == self.depth:  # leaf node를 처리. 해당 상태의 점수를 반환한다.
@@ -196,22 +197,24 @@ class MinimaxAgent(MultiAgentSearchAgent):
 
     def max_layer(self, State, current_depth):
         LegalMoves = State.getLegalActions(0)
-        max_val = -999999
-        max_act = LegalMoves[0]
+        max_val = float('-inf')
+        max_act = []
 
         for action in LegalMoves:                                       # 가능한 액션들로만 탐색한다.
             succ = State.generateSuccessor(0, action)
             val, _ = self.value(succ, 1, current_depth)                 # 해당 액션을 시행했을때의 value를 얻고
             if max_val <  val:                                          # 가장 큰 것을 찾는다.
                 max_val = val
-                max_act = action
+                max_act = [action]
+            elif max_val == val:
+                max_act.append(action)
 
         return max_val, max_act
     
     def min_layer(self, State, agentIdx, current_depth):            # max_layer 함수와 역할이 반대일 뿐 알고리즘은 동일하다.
         LegalMoves = State.getLegalActions(agentIdx)
-        min_val = 999999
-        min_act = LegalMoves[0]
+        min_val = float('inf')
+        min_act = []
 
         for action in LegalMoves:
             succ = State.generateSuccessor(agentIdx, action)
@@ -221,7 +224,9 @@ class MinimaxAgent(MultiAgentSearchAgent):
                 val,_ = self.value(succ, agentIdx+1, current_depth)     # 현재 agent가 마지막 agent가 아니면 다음 agent를 탐색
             if min_val > val:
                 min_val = val
-                min_act = action
+                min_act = [action]
+            elif min_val == val:
+                min_act.append(action)
 
         return min_val, min_act
 
@@ -237,7 +242,7 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
         
         val, action = self.value(gameState, 0, 0, None, None)
 
-        return action
+        return random.choice(action)
     
     def value(self, State, next_agent, current_depth, alpha, beta):                 # minmax와 대부분 동일하다. 달라진 점은 alpha와 beta를 인자로 넘겨주고, 이들의 value를 결정하는 적절한 위치에 코드를 삽입했다.
         if State.isWin() or State.isLose() or current_depth == self.depth:
@@ -249,8 +254,8 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
 
     def max_layer(self, State, current_depth, alpha, beta):
         LegalMoves = State.getLegalActions(0)
-        max_val = -999999
-        max_act = LegalMoves[0]
+        max_val = float('-inf')
+        max_act = []
         a = alpha
         b = beta
 
@@ -261,7 +266,9 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
                 a = val
             if max_val <  val:
                 max_val = val
-                max_act = action
+                max_act = [action]
+            elif max_val == val:
+                max_act.append(action)
             if b != None:                                   # beta가 비어있지 않을때 조건문이 실행되도록 한다.
                 if b < max_val:
                     return max_val, max_act                 # 여기서 바로 return 함으로써 가지치기가 수행된다.
@@ -271,8 +278,8 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
     
     def min_layer(self, State, agentIdx, current_depth, alpha, beta):           # max_layer 함수와 역할이 반대일뿐 알고리즘은 온전히 동일하다
         LegalMoves = State.getLegalActions(agentIdx)
-        min_val = 999999
-        min_act = LegalMoves[0]
+        min_val = float('inf')
+        min_act = []
         a = alpha
         b = beta
 
@@ -286,7 +293,9 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
                 b = val
             if min_val > val:
                 min_val = val
-                min_act = action
+                min_act = [action]
+            elif min_val == val:
+                min_act.append(action)
             if a != None:
                 if a > min_val:
                     return min_val, min_act
