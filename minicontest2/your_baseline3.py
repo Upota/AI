@@ -74,7 +74,7 @@ class AlphaBetaAgent(CaptureAgent):
     agent = self.order[orderIdx]
     LegalMoves = gameState.getLegalActions(agent)
     LegalMoves.remove('Stop')                       # 계산 공간을 줄이기위해 stop액션을 모두 제외하고 계산하였다.
-    max_val = -999999
+    max_val = float('-inf')
     max_act = []
     a = alpha
     b = beta
@@ -100,7 +100,7 @@ class AlphaBetaAgent(CaptureAgent):
     agent = self.order[orderIdx]
     LegalMoves = gameState.getLegalActions(agent)
     LegalMoves.remove('Stop')
-    min_val = 999999
+    min_val = float('inf')
     min_act = []
     a = alpha
     b = beta

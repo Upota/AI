@@ -12,7 +12,7 @@ import pickle
 # In[13]:
 
 
-with open('./cmu_weights.pkl', 'rb') as f:
+with open('./report/cmu_weights.pkl', 'rb') as f:
     data = pickle.load(f)
 
 

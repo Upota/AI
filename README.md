@@ -1,59 +1,27 @@
-# Artificial Intelligence
-COSE361  
-PACMAN Naive Q-learning Algorithms Assignments 
+# Artificial Intelligence  
+  
+_All of the source code is from CS188 Berkeley._
+_(https://inst.eecs.berkeley.edu/~cs188/sp20/projects/)_  
 
-# Assignment 1
-Implement DFS, BFS, uniformCostSearch, and A* search for a Pacman agent to find paths through his maze world, both to reach a particular location and to collect food efficiently.
-* Edited files: search.py
-* How to run
-  <pre>
+These projects are the result of the course of studying reinforcement learning.  
+
+# Welcome to Pacman
+In the each directoy, you can play a game of Pacman by typing the following at the command line:
+<pre>
   <code>
-  $ python pacman.py -l mediumMaze -p SearchAgent
-  $ python pacman.py -l mediumMaze -p SearchAgent -a fn=bfs
-  $ python pacman.py -l mediumMaze -p SearchAgent -a fn=ucs
-  $ python pacman.py -l bigMaze -z .5 -p SearchAgent -a fn=astar,heuristic=manhattanHeuristic
+  $ python pacman.py
   </code>
-  </pre>  
-  
-# Assignment 2
-Implement ReflexAgent, Minimax, and Alpha-Beta Prunung for Multi-Agent Pacman
-* Edited files: multiAgents.py
-* How to run
-  <pre>
+</pre> 
+You can change the layout and the Pacman Agent by using <code> -l </code> and <code> -p </code>.  
+Each assignment has a variety of layouts in its layout folder.
+<pre>
   <code>
-  $ python autograder.py -q q1
-  $ python autograder.py -q q2
-  $ python autograder.py -q q3
+  $ python pacman.py -l testMaze -p GoWestAgent
   </code>
-  </pre>
-  
-# Minicontest 2
-Implement Multi-agent Pacman for pacman contest
-* Edited files:  {Student_ID}.py, your_baseline1.py,
-your_baseline2.py, your_baseline3.py 
-* How to run
-  <pre>
+</pre>
+For more options, type the command below:
+<pre>
   <code>
-  $ python capture.py -r {Student_ID} -n 10
+  $ python pacman.py -h
   </code>
-  </pre>
-  
-# Final
-Implement Q-learning, epsilon greedy, bridge crossing, Q-learning and pacman, and approximate Q-learning
-* Edited files: qlearningAgents.py, analysis.py, featureExtractors.py, Myget_figures_ep.py, Myget_figures_alpha.py
-* How to run
-  <pre>
-  <code>
-  $ python autograder.py -q q6
-  
-  $ python autograder.py -q q7
-  
-  $ python autograder.py -q q8
-  
-  $ python pacman.py -p PacmanQAgent -x 2000 -n 2010 -l smallGrid
-  $ python autograder.py -q q9
-  
-  $ python pacman.py -p ApproximateQAgent -x 2000 -n 2010 -l smallGrid
-  $ python autograder.py -q q10
-  </code>
-  </pre>
+</pre>
