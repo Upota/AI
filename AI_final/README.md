@@ -1,5 +1,5 @@
 # AI_Final
-Implement Q-learning, epsilon greedy, bridge crossing, Q-learning and pacman, and approximate Q-learning.  
+Implement __Q-learning, epsilon greedy, bridge crossing, Q-learning and pacman, and approximate Q-learning.__  
   
 * <code>qlearningAgents.py</code>: Where all of Q-learning algorithms were implemented.
 * How to run
